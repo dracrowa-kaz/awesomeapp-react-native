@@ -10,16 +10,20 @@ import {
 import { connect } from 'react-redux';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { addTodo } from './Todo'
-import {  StackNavigator } from 'react-navigation'
 
 //export function addTodo(name, dueTo) {
 class AwesomeApp extends Component {
+  static navigationOptions = {
+    title: 'AwesomeApp',
+  };
   constructor(props) {
     super(props)
     this.pushed = this.pushed.bind(this)
   }
   pushed(){
     this.props.dispatch(addTodo("test","aaa"))
+    const { navigate } = this.props.navigation
+    navigate('ChatList', { name: 'Jane' })
   }
   render() {
     return (
